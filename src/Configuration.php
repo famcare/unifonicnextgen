@@ -51,7 +51,7 @@ class Configuration
      */
     private static $environmentsMap = array(
         Environments::PRODUCTION => array(
-            Servers::BASE_URL => 'el.cloud.unifonic.com',
+            Servers::BASE_URL => 'https://el.cloud.unifonic.com',
         ),
     );
 }
