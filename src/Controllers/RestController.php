@@ -515,6 +515,12 @@ class RestController extends BaseController
 
         $mapper = $this->getJsonMapper();
 
-        return $mapper->mapClass($response->body, 'UnifonicNextGenLib\\Models\\SendResponse');
+        $decodedBody = json_decode($response->body);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new \InvalidArgumentException('Failed to decode JSON response: ' . json_last_error_msg());
+        }
+
+        return $mapper->mapClass($decodedBody, 'UnifonicNextGenLib\\Models\\SendResponse');
     }
 }
